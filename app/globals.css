@@ -1,0 +1,76 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@theme inline {
+  --font-sans: 'Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --color-background: #0e1013;
+  --color-foreground: #f3f4f6;
+  --color-primary: #f5ba42;
+  --color-primary-hover: #e5a82e;
+  --color-surface: #14171c;
+  --color-surface-card: #181b21;
+  --color-surface-hover: #22262e;
+  --color-border-gold: rgba(245, 186, 66, 0.28);
+}
+
+@layer components {
+  /* Faro Casino Custom Mangled Styles */
+  .fc-gold-glow {
+    box-shadow: 0 0 25px -4px rgba(245, 186, 66, 0.35);
+  }
+  .fc-card-glow {
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08), 0 12px 32px -10px rgba(0, 0, 0, 0.6);
+  }
+  .fc-btn-gold {
+    background: linear-gradient(180deg, #f8c95a 0%, #f5ba42 60%, #e0a328 100%);
+    color: #121417;
+    font-weight: 700;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .fc-btn-gold:hover {
+    background: linear-gradient(180deg, #ffd675 0%, #f7c355 60%, #eab034 100%);
+    box-shadow: 0 0 20px rgba(245, 186, 66, 0.45);
+    transform: translateY(-1px);
+  }
+  .fc-btn-gold:active {
+    transform: translateY(0);
+  }
+  .fc-btn-dark {
+    background: #1f232b;
+    color: #e5e7eb;
+    transition: all 0.2s ease;
+  }
+  .fc-btn-dark:hover {
+    background: #2a2f3a;
+    color: #ffffff;
+  }
+  .fc-badge-dot {
+    animation: fc-pulse 2s infinite ease-in-out;
+  }
+  @keyframes fc-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* Drawer CSS Target navigation */
+  #faro-sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.25s ease-in-out;
+  }
+  #faro-sidebar:target {
+    transform: translateX(0) !important;
+  }
+  .fc-drawer-scrim {
+    display: none;
+  }
+  #faro-sidebar:target ~ .fc-drawer-scrim {
+    display: block !important;
+  }
+
+  @media (min-width: 1024px) {
+    #faro-sidebar {
+      transform: none !important;
+      position: static !important;
+    }
+  }
+}
